@@ -28,13 +28,13 @@ public class CartographyService {
 
     public HashMap<String, Country> getCountries() {
 
-        String jsonResponse = countryClient.getCountryData();
+        final String jsonResponse = countryClient.getCountryData();
 
-        List<Country> countryList = countryMapper.convertToDomain(parseCountries(jsonResponse));
+        final List<Country> countryList = countryMapper.convertToDomain(parseCountries(jsonResponse));
         return toMap(countryList);
     }
 
-    private CountryDto[] parseCountries(String jsonResponse) {
+    private CountryDto[] parseCountries(final String jsonResponse) {
         try {
             return objectMapper.readValue(jsonResponse, CountryDto[].class);
         } catch (JsonProcessingException e) {
@@ -42,7 +42,7 @@ public class CartographyService {
         }
     }
 
-    private HashMap<String, Country> toMap(List<Country> countryList) {
+    private HashMap<String, Country> toMap(final List<Country> countryList) {
         return countryList.stream()
                 .collect(Collectors.toMap(
                         Country::getShortName,
