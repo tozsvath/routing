@@ -2,6 +2,7 @@ package com.country.routing.api.external;
 
 import com.country.routing.config.ApiConfig;
 import lombok.AllArgsConstructor;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 
@@ -9,13 +10,14 @@ import java.net.URI;
 @AllArgsConstructor
 public class CountryClient {
 
-    private ApiConfig apiConfig;
+    private final ApiConfig apiConfig;
+    private final RestTemplate restTemplate;
 
     public String getCountryData() {
 
         final URI uri = URI.create(concatPath());
 
-        return apiConfig.restTemplate().getForEntity(uri, String.class).getBody();
+        return restTemplate.getForEntity(uri, String.class).getBody();
     }
 
     private String concatPath() {

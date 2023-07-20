@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class CartographyService {
         this.objectMapper = objectMapper;
     }
 
-    public HashMap<String, Country> getCountries() {
+    public Map<String, Country> getCountries() {
 
         final String jsonResponse = countryClient.getCountryData();
 

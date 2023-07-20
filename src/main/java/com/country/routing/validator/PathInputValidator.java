@@ -13,7 +13,7 @@ import java.util.Set;
 @Service
 public class PathInputValidator implements RoutingValidator {
 
-    private final Set<String> EMEA_AND_ASIA = Set.of("Asia", "Europe", "Africa", "ASIA", "EUROPE", "AFRICA");
+    private static final Set<String> EMEA_AND_ASIA = Set.of("Asia", "Europe", "Africa", "ASIA", "EUROPE", "AFRICA");
 
     @Override
     public void validate(final String origin, final String destination, final Map<String, Country> countries) {
